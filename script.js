@@ -17,21 +17,36 @@ addBook.addEventListener('click', () => {
     displayBooks();
 })
 
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = () => {
-        let infoStr = "";
-        infoStr += `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "already read" : "not read yet"}`;
-        return infoStr;
+class Book{
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    info(){
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "already read" : "not read yet"}`;
+    }
+    toggleRead(){
+        this.read = !this.read;
     }
 }
 
-Book.prototype.toggleRead = function () {
-    this.read = !this.read;
-}
+// function Book(title, author, pages, read){
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+//     this.info = () => {
+//         let infoStr = "";
+//         infoStr += `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "already read" : "not read yet"}`;
+//         return infoStr;
+//     }
+// }
+
+// Book.prototype.toggleRead = function () {
+//     this.read = !this.read;
+// }
 
 function addBookToLibrary(title, author, pages, read){
     myLibrary.push(new Book(title, author, pages, read));
